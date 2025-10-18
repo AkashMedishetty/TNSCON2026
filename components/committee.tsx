@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { User } from "lucide-react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const committeeMembers = [
   { name: "Sri Puvvada Nageswara Rao Garu", role: "Chief Patron", photo: "/P Nageswara Rao Cheif Patron .jpeg" },
@@ -28,14 +29,15 @@ const committeeMembers = [
 export function Committee() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isMobile = useIsMobile()
 
   return (
     <section id="committee" ref={ref} className="py-12 sm:py-16 lg:py-32 bg-secondary/20">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          initial={isMobile ? {} : { opacity: 0, y: 50 }}
+          animate={isMobile ? {} : isInView ? { opacity: 1, y: 0 } : {}}
+          transition={isMobile ? {} : { duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-10 sm:mb-12 lg:mb-16 text-primary"
         >
           Organising Committee
@@ -45,14 +47,14 @@ export function Committee() {
           {committeeMembers.map((member, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{
+              initial={isMobile ? {} : { opacity: 0, y: 50, scale: 0.9 }}
+              animate={isMobile ? {} : isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={isMobile ? {} : {
                 duration: 0.8,
                 delay: index * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              whileHover={{ scale: 1.05, y: -8 }}
+              whileHover={isMobile ? {} : { scale: 1.05, y: -8 }}
               className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all"
             >
               <div className="flex items-start gap-3 sm:gap-4">

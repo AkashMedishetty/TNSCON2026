@@ -3,19 +3,21 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export function Welcome() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isMobile = useIsMobile()
 
   return (
     <section id="welcome" ref={ref} className="py-12 sm:py-20 lg:py-40 bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={isMobile ? {} : { opacity: 0, y: 30 }}
+            animate={isMobile ? {} : isInView ? { opacity: 1, y: 0 } : {}}
+            transition={isMobile ? {} : { duration: 0.8, ease: "easeOut" }}
             className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold text-center mb-8 sm:mb-12 lg:mb-16"
           >
             Welcome to
@@ -24,9 +26,9 @@ export function Welcome() {
           </motion.h2>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            initial={isMobile ? {} : { opacity: 0, y: 30 }}
+            animate={isMobile ? {} : isInView ? { opacity: 1, y: 0 } : {}}
+            transition={isMobile ? {} : { duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="bg-card/50 backdrop-blur-sm rounded-lg p-4 sm:p-6 lg:p-12 border border-gray-200/50 space-y-4 sm:space-y-6"
           >
             <p className="text-sm sm:text-base lg:text-xl leading-relaxed text-foreground/90">
@@ -72,9 +74,9 @@ export function Welcome() {
             </p>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              initial={isMobile ? {} : { opacity: 0, scale: 0.9 }}
+              animate={isMobile ? {} : isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={isMobile ? {} : { duration: 0.8, delay: 0.4 }}
               className="pt-4 sm:pt-6 border-t border-gray-200/50"
             >
               <p className="font-serif text-base sm:text-lg lg:text-xl text-foreground mb-1 font-semibold">The Organizing Committee</p>

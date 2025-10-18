@@ -4,27 +4,29 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { ExternalLink } from "lucide-react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export function Registration() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isMobile = useIsMobile()
 
   return (
     <section id="registration" ref={ref} className="py-12 sm:py-16 lg:py-32 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          initial={isMobile ? {} : { opacity: 0, y: 50 }}
+          animate={isMobile ? {} : isInView ? { opacity: 1, y: 0 } : {}}
+          transition={isMobile ? {} : { duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-center mb-10 sm:mb-12 lg:mb-16 text-foreground"
         >
           Registration Details
         </motion.h2>
 
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          initial={isMobile ? {} : { opacity: 0, y: 60 }}
+          animate={isMobile ? {} : isInView ? { opacity: 1, y: 0 } : {}}
+          transition={isMobile ? {} : { duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-5xl mx-auto"
         >
           <div className="bg-card border border-primary/10 rounded-2xl p-4 sm:p-6 lg:p-12 shadow-xl overflow-x-auto">
@@ -69,9 +71,9 @@ export function Registration() {
             </table>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              initial={isMobile ? {} : { opacity: 0 }}
+              animate={isMobile ? {} : isInView ? { opacity: 1 } : {}}
+              transition={isMobile ? {} : { duration: 0.8, delay: 0.5 }}
               className="mt-4 sm:mt-6 text-xs sm:text-sm text-foreground/60 italic"
             >
               * All registration fees exclude 18% GST
@@ -79,9 +81,9 @@ export function Registration() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            initial={isMobile ? {} : { opacity: 0, scale: 0.9 }}
+            animate={isMobile ? {} : isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={isMobile ? {} : { duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="text-center mt-6 sm:mt-8 lg:mt-10"
           >
             <a

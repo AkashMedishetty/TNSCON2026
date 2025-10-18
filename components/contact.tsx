@@ -6,10 +6,12 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isMobile = useIsMobile()
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -21,9 +23,9 @@ export function Contact() {
     <section id="contact" ref={ref} className="py-12 sm:py-16 lg:py-32 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          initial={isMobile ? {} : { opacity: 0, y: 50 }}
+          animate={isMobile ? {} : isInView ? { opacity: 1, y: 0 } : {}}
+          transition={isMobile ? {} : { duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-center mb-10 sm:mb-12 lg:mb-16 text-foreground"
         >
           Contact <span className="text-primary">Us</span>
@@ -32,9 +34,9 @@ export function Contact() {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            initial={isMobile ? {} : { opacity: 0, x: -60 }}
+            animate={isMobile ? {} : isInView ? { opacity: 1, x: 0 } : {}}
+            transition={isMobile ? {} : { duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-6 sm:space-y-8"
           >
             <div className="flex items-start gap-3 sm:gap-4">
@@ -81,9 +83,9 @@ export function Contact() {
 
           {/* Contact Form */}
           <motion.form
-            initial={{ opacity: 0, y: 60, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            initial={isMobile ? {} : { opacity: 0, y: 60, scale: 0.95 }}
+            animate={isMobile ? {} : isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={isMobile ? {} : { duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             onSubmit={handleSubmit}
             className="bg-card/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-200/50 space-y-4 sm:space-y-6"
           >
