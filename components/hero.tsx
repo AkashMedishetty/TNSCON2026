@@ -24,9 +24,9 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div className="text-left">
             <motion.div
-              initial={isMobile ? {} : { opacity: 0, scale: 0.8 }}
-              animate={isMobile ? {} : { opacity: 1, scale: 1 }}
-              transition={isMobile ? {} : { duration: 0.6, delay: 0.2 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
               className="inline-flex items-center gap-2 mb-6"
             >
               <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg rotate-45 flex items-center justify-center">
@@ -35,9 +35,9 @@ export function Hero() {
             </motion.div>
 
             <motion.h1
-              initial={isMobile ? {} : { opacity: 0, y: 30 }}
-              animate={isMobile ? {} : { opacity: 1, y: 0 }}
-              transition={isMobile ? {} : { duration: 1, delay: 0.4 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={isMobile ? { duration: 0 } : { duration: 1, delay: 0.4 }}
               className="font-sans text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 sm:mb-8"
             >
               TNSCON 2026
@@ -50,9 +50,9 @@ export function Hero() {
             </motion.h1>
 
             <motion.p
-              initial={isMobile ? {} : { opacity: 0, y: 20 }}
-              animate={isMobile ? {} : { opacity: 1, y: 0 }}
-              transition={isMobile ? {} : { duration: 0.8, delay: 0.6 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={isMobile ? { duration: 0 } : { duration: 0.8, delay: 0.6 }}
               className="text-base sm:text-lg lg:text-xl text-foreground/70 mb-6 sm:mb-8 font-light leading-relaxed max-w-xl"
             >
               Exploring the intricate architecture of the human brain through cutting-edge neuroscience research and
@@ -60,9 +60,9 @@ export function Hero() {
             </motion.p>
 
             <motion.button
-              initial={isMobile ? {} : { opacity: 0, y: 20 }}
-              animate={isMobile ? {} : { opacity: 1, y: 0 }}
-              transition={isMobile ? {} : { duration: 0.8, delay: 0.8 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={isMobile ? { duration: 0 } : { duration: 0.8, delay: 0.8 }}
               className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-foreground hover:border-primary transition-all duration-300 overflow-hidden"
             >
               <span className="relative z-10 text-foreground group-hover:text-background transition-colors duration-300 font-semibold uppercase tracking-wider text-xs sm:text-sm flex items-center gap-2 sm:gap-3">
@@ -81,9 +81,9 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            initial={isMobile ? {} : { opacity: 0, x: 50 }}
-            animate={isMobile ? {} : { opacity: 1, x: 0 }}
-            transition={isMobile ? {} : { duration: 1, delay: 0.6 }}
+            initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={isMobile ? { duration: 0 } : { duration: 1, delay: 0.6 }}
             className="relative h-[400px] sm:h-[500px] md:h-[700px] lg:h-[900px] flex items-center justify-center"
           >
             {/* Brain Image */}
@@ -97,9 +97,9 @@ export function Hero() {
               {/* Interactive Labels */}
               {/* Frontal Lobe - Top Left */}
               <motion.div
-                initial={isMobile ? {} : { opacity: 0, scale: 0 }}
-                animate={isMobile ? {} : { opacity: 1, scale: 1 }}
-                transition={isMobile ? {} : { duration: 0.6, delay: 1 }}
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0 }}
                 className="hidden md:block absolute top-[25%] md:top-[30%] left-[5%] md:left-[15%] z-20"
               >
                 <div className="flex items-center gap-2 md:gap-4">
@@ -125,9 +125,9 @@ export function Hero() {
 
               {/* Temporal Lobe - Middle Left */}
               <motion.div
-                initial={isMobile ? {} : { opacity: 0, scale: 0 }}
-                animate={isMobile ? {} : { opacity: 1, scale: 1 }}
-                transition={isMobile ? {} : { duration: 0.6, delay: 1.6 }}
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0 }}
                 className="hidden md:block absolute top-[46%] left-[8%] md:left-[20%] z-20"
               >
                 <div className="flex items-center gap-2 md:gap-4">
@@ -153,9 +153,9 @@ export function Hero() {
 
               {/* Parietal Lobe - Top Right */}
               <motion.div
-                initial={isMobile ? {} : { opacity: 0, scale: 0 }}
-                animate={isMobile ? {} : { opacity: 1, scale: 1 }}
-                transition={isMobile ? {} : { duration: 0.6, delay: 1.2 }}
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0 }}
                 className="hidden md:block absolute top-[24%] md:top-[29%] right-[5%] md:right-[16%] z-20"
               >
                 <div className="flex items-center gap-2 md:gap-4">
@@ -181,9 +181,9 @@ export function Hero() {
 
               {/* Occipital Lobe - Middle Right */}
               <motion.div
-                initial={isMobile ? {} : { opacity: 0, scale: 0 }}
-                animate={isMobile ? {} : { opacity: 1, scale: 1 }}
-                transition={isMobile ? {} : { duration: 0.6, delay: 1.4 }}
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0 }}
                 className="hidden md:block absolute top-[40%] right-[2%] md:right-[7%] z-20"
               >
                 <div className="flex items-center gap-2 md:gap-4">
@@ -209,9 +209,9 @@ export function Hero() {
 
               {/* Cerebellum - Bottom Right */}
               <motion.div
-                initial={isMobile ? {} : { opacity: 0, scale: 0 }}
-                animate={isMobile ? {} : { opacity: 1, scale: 1 }}
-                transition={isMobile ? {} : { duration: 0.6, delay: 1.8 }}
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0 }}
                 className="hidden md:block absolute bottom-[35%] md:bottom-[40%] right-[8%] md:right-[18%] z-20"
               >
                 <div className="flex items-center gap-2 md:gap-4">
