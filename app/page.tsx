@@ -6,6 +6,7 @@ import { Committee } from "@/components/committee"
 import { Registration } from "@/components/registration"
 import { ExploreKhammam } from "@/components/explore-khammam"
 import { Contact } from "@/components/contact"
+import { Footer } from "@/components/footer"
 import { BackToTop } from "@/components/back-to-top"
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <Registration />
       <ExploreKhammam />
       <Contact />
+      <Footer />
       <BackToTop />
     </main>
   )

@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ChevronDown } from "lucide-react"
 import { useRef } from "react"
 
 export function Hero() {
@@ -37,11 +36,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="font-sans text-5xl lg:text-7xl font-bold leading-[1.1] mb-8 text-balance"
+              className="font-sans text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 sm:mb-8"
             >
               TNSCON 2026
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-pink-400 to-primary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 Neuroscience
               </span>
               <br />
@@ -52,7 +51,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg lg:text-xl text-foreground/70 mb-8 font-light leading-relaxed max-w-xl"
+              className="text-base sm:text-lg lg:text-xl text-foreground/70 mb-6 sm:mb-8 font-light leading-relaxed max-w-xl"
             >
               Exploring the intricate architecture of the human brain through cutting-edge neuroscience research and
               innovation
@@ -62,12 +61,12 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="group relative px-8 py-4 bg-transparent border-2 border-foreground hover:border-primary transition-all duration-300 overflow-hidden"
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-foreground hover:border-primary transition-all duration-300 overflow-hidden"
             >
-              <span className="relative z-10 text-foreground group-hover:text-background transition-colors duration-300 font-semibold uppercase tracking-wider text-sm flex items-center gap-3">
+              <span className="relative z-10 text-foreground group-hover:text-background transition-colors duration-300 font-semibold uppercase tracking-wider text-xs sm:text-sm flex items-center gap-2 sm:gap-3">
                 Register for Conference
                 <svg
-                  className="w-6 h-6 group-hover:translate-x-1 transition-transform"
+                  className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -83,14 +82,14 @@ export function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="relative h-[600px] md:h-[700px] lg:h-[900px] flex items-center justify-center"
+            className="relative h-[400px] sm:h-[500px] md:h-[700px] lg:h-[900px] flex items-center justify-center"
           >
             {/* Brain Image */}
             <div className="relative w-full h-full flex items-center justify-center">
               <img
                 src="/brain-anatomy-clean-side-view.png"
                 alt="Human Brain Anatomy"
-                className="w-[500px] h-[500px] md:w-[650px] md:h-[650px] lg:w-[900px] lg:h-[900px] object-contain relative z-10 drop-shadow-2xl"
+                className="w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] md:w-[650px] md:h-[650px] lg:w-[900px] lg:h-[900px] object-contain relative z-10 drop-shadow-2xl"
               />
 
               {/* Interactive Labels */}
@@ -241,24 +240,6 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-
-      {/* Existing code here */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30"
-      >
-        <a
-          href="#countdown"
-          className="flex flex-col items-center gap-2 text-foreground/50 hover:text-primary transition-colors group"
-        >
-          <div className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center group-hover:border-primary transition-colors">
-            <ChevronDown className="w-5 h-5 animate-bounce" />
-          </div>
-          <span className="text-xs uppercase tracking-wider font-light">Scroll</span>
-        </a>
-      </motion.div>
 
       {/* Existing code here */}
       <motion.div
