@@ -6,7 +6,35 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="container mx-auto px-4 lg:px-8 py-8 sm:py-12 lg:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
+          {/* Conference Secretariat */}
+          <div>
+            <h3 className="text-blue-400 font-bold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
+              CONFERENCE SECRETARIAT
+            </h3>
+            <div className="space-y-3">
+              <p className="text-gray-400 text-xs font-semibold uppercase tracking-wide">Corresponding Address</p>
+              <p className="font-semibold text-base sm:text-lg">Dr. G.V. Murali</p>
+              <p className="text-gray-400 text-xs sm:text-sm">(Organizing Chairman)</p>
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                Head, Department of Neurosurgery,<br />
+                Mamata Medical College
+              </p>
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
+                <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <a href="tel:+918374000275" className="hover:text-primary transition-colors break-all">
+                  +91 - 8374000275
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
+                <Mail className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <a href="mailto:tnscon2026@gmail.com" className="hover:text-primary transition-colors break-all">
+                  tnscon2026@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* Conference Manager */}
           <div>
             <h3 className="text-orange-400 font-bold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">

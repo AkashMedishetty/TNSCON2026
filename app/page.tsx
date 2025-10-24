@@ -3,6 +3,7 @@ import { Navigation } from "@/components/navigation"
 import { CountdownSection } from "@/components/countdown-section"
 import { Welcome } from "@/components/welcome"
 import { Committee } from "@/components/committee"
+import { Venue } from "@/components/venue"
 import { Registration } from "@/components/registration"
 import { ExploreKhammam } from "@/components/explore-khammam"
 import { Contact } from "@/components/contact"
@@ -17,6 +18,7 @@ export default function Home() {
       <CountdownSection />
       <Welcome />
       <Committee />
+      <Venue />
       <Registration />
       <ExploreKhammam />
       <Contact />
