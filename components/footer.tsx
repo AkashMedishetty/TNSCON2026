@@ -14,16 +14,15 @@ export function Footer() {
             </h3>
             <div className="space-y-3">
               <p className="text-gray-400 text-xs font-semibold uppercase tracking-wide">Corresponding Address</p>
-              <p className="font-semibold text-base sm:text-lg">Dr. G.V. Murali</p>
-              <p className="text-gray-400 text-xs sm:text-sm">(Organizing Chairman)</p>
+              <p className="font-semibold text-base sm:text-lg">Dr. K Jagadeesh Babu (MS.Mch)</p>
               <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                Head, Department of Neurosurgery,<br />
-                Mamata Medical College
+                Head, Department of Neurosurgery. Mamata Medical College<br />
+                Organizing Secretary. TNSCON 2026 — Khammam
               </p>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
                 <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-                <a href="tel:+918374000275" className="hover:text-primary transition-colors break-all">
-                  +91 - 8374000275
+                <a href="tel:+918374590275" className="hover:text-primary transition-colors break-all">
+                  +91 - 8374590275
                 </a>
               </div>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
@@ -166,7 +165,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-xs sm:text-sm"
               >
-                PurpleHat Events
+                PurpleHat Tech
               </a>
             </div>
           </div>

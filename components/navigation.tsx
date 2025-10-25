@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import Link from "next/link"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -31,12 +32,12 @@ export function Navigation() {
   }, [])
 
   const navLinks = [
-    { href: "#hero", label: "Home" },
-    { href: "#welcome", label: "Welcome" },
-    { href: "#committee", label: "Committee" },
-    { href: "#registration", label: "Registration" },
-    { href: "#explore", label: "Explore" },
-    { href: "#contact", label: "Contact" },
+    { href: "/committee", label: "Committee" },
+    { href: "/program", label: "Program" },
+    { href: "/abstracts", label: "Abstracts" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/venue", label: "Venue" },
+    { href: "/contact", label: "Contact" },
   ]
 
   return (

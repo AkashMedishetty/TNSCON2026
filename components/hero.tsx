@@ -1,12 +1,52 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 export function Hero() {
   const ref = useRef(null)
+  const brainRef = useRef<HTMLDivElement>(null)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const isMobile = useIsMobile()
+  
+  const [isHovered, setIsHovered] = useState(false)
+  const [isMoving, setIsMoving] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    setIsLoaded(true)
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      if (brainRef.current && !isMobile) {
+        const rect = brainRef.current.getBoundingClientRect()
+        const centerX = rect.left + rect.width / 2
+        const centerY = rect.top + rect.height / 2
+        
+        const deltaX = (e.clientX - centerX) / rect.width
+        const deltaY = (e.clientY - centerY) / rect.height
+        
+        setIsMoving(true)
+        setMousePosition({
+          x: Math.max(-1, Math.min(1, deltaX)) * 35,
+          y: Math.max(-1, Math.min(1, deltaY)) * 25
+        })
+
+        if (timeoutRef.current) clearTimeout(timeoutRef.current)
+        timeoutRef.current = setTimeout(() => {
+          setIsMoving(false)
+          setMousePosition({ x: 0, y: 0 })
+        }, 1500)
+      }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+  }, [isMobile])
 
   return (
     <section
@@ -86,13 +126,113 @@ export function Hero() {
             transition={isMobile ? { duration: 0 } : { duration: 1, delay: 0.6 }}
             className="relative h-[400px] sm:h-[500px] md:h-[700px] lg:h-[900px] flex items-center justify-center"
           >
-            {/* Brain Image */}
-            <div className="relative w-full h-full flex items-center justify-center">
-              <img
-                src="/brain-anatomy-clean-side-view.png"
-                alt="Human Brain Anatomy"
-                className="w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] md:w-[650px] md:h-[650px] lg:w-[900px] lg:h-[900px] object-contain relative z-10 drop-shadow-2xl"
-              />
+            {/* Brain Image with Effects */}
+            <div 
+              ref={brainRef}
+              className="relative w-full h-full flex items-center justify-center"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {/* Concentric Pulsing Circles */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ marginTop: '-70px', marginLeft: '10px' }}>
+                {[1, 2, 3, 4, 5, 6, 7].map((index) => (
+                  <div
+                    key={index}
+                    className="absolute rounded-full border transition-all duration-200 animate-pulse"
+                    style={{
+                      width: `${(180 + index * 45) * 1.15}px`,
+                      height: `${(180 + index * 45) * 1.15}px`,
+                      animationDelay: `${index * 0.4}s`,
+                      animationDuration: '3s',
+                      borderColor: isMoving 
+                        ? `rgba(236, 72, 153, ${0.15 + index * 0.03})` 
+                        : `rgba(236, 72, 153, ${0.06 + index * 0.015})`,
+                      transform: `scale(${isMoving ? 1.03 : 1})`,
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Brain Image with 3D Transform */}
+              <div 
+                className="relative transition-all duration-200 ease-out"
+                style={{
+                  transform: `
+                    perspective(800px) 
+                    rotateX(${isMoving ? mousePosition.y : 0}deg) 
+                    rotateY(${isMoving ? mousePosition.x : 0}deg) 
+                    translateY(${isMoving ? -10 : 0}px)
+                    scale(${isMoving ? 1.05 : 1})
+                  `,
+                  transformStyle: 'preserve-3d'
+                }}
+              >
+                <img
+                  src="/brain-anatomy-clean-side-view.png"
+                  alt="Human Brain Anatomy"
+                  className="w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] md:w-[650px] md:h-[650px] lg:w-[900px] lg:h-[900px] object-contain relative z-10 drop-shadow-2xl transition-all duration-300"
+                  style={{
+                    filter: `
+                      brightness(${isHovered ? 1.15 : 1.05}) 
+                      contrast(${isHovered ? 1.2 : 1.05})
+                      saturate(${isHovered ? 1.1 : 1})
+                    `
+                  }}
+                />
+                
+                {/* Reflection Effect */}
+                <div 
+                  className="absolute bottom-0 left-1/2 w-full h-24 bg-gradient-to-b from-pink-500/6 to-transparent blur-xl transition-all duration-500 pointer-events-none"
+                  style={{ 
+                    transform: `translateX(-50%) translateY(-15px) scaleY(0.2) scale(${isHovered ? 1.05 : 1})`,
+                  }}
+                />
+              </div>
+
+              {/* SVG Neural Pathways */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                <defs>
+                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ec4899" stopOpacity="0" />
+                    <stop offset="50%" stopColor="#ec4899" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#ec4899" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ec4899" stopOpacity="0" />
+                    <stop offset="50%" stopColor="#ec4899" stopOpacity="0.4" />
+                    <stop offset="100%" stopColor="#ec4899" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="gradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#ec4899" stopOpacity="0" />
+                    <stop offset="50%" stopColor="#ec4899" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#ec4899" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M50 200 Q150 150 250 200"
+                  stroke="url(#gradient1)"
+                  strokeWidth="1"
+                  fill="none"
+                  className="transition-opacity duration-500"
+                  style={{ opacity: isHovered ? 0.5 : 0.3 }}
+                />
+                <path
+                  d="M300 180 Q400 220 500 180"
+                  stroke="url(#gradient2)"
+                  strokeWidth="1"
+                  fill="none"
+                  className="transition-opacity duration-500"
+                  style={{ opacity: isHovered ? 0.4 : 0.2 }}
+                />
+                <path
+                  d="M150 100 Q150 200 150 300"
+                  stroke="url(#gradient3)"
+                  strokeWidth="1"
+                  fill="none"
+                  className="transition-opacity duration-500"
+                  style={{ opacity: isHovered ? 0.3 : 0.15 }}
+                />
+              </svg>
 
               {/* Interactive Labels */}
               {/* Frontal Lobe - Top Left */}
@@ -100,7 +240,15 @@ export function Hero() {
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0 }}
-                className="hidden md:block absolute top-[25%] md:top-[30%] left-[5%] md:left-[15%] z-20"
+                className="hidden md:block absolute top-[25%] md:top-[30%] left-[5%] md:left-[15%] z-20 transition-all duration-200 ease-out"
+                style={{
+                  transform: `
+                    perspective(800px) 
+                    rotateX(${isMoving ? mousePosition.y * 0.8 : 0}deg) 
+                    rotateY(${isMoving ? mousePosition.x * 0.8 : 0}deg)
+                  `,
+                  transformStyle: 'preserve-3d'
+                }}
               >
                 <div className="flex items-center gap-2 md:gap-4">
                   <div className="bg-slate-800/90 backdrop-blur-sm px-2 py-1 md:px-4 md:py-2 rounded-lg border border-pink-400/30 shadow-xl">
@@ -128,7 +276,15 @@ export function Hero() {
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0 }}
-                className="hidden md:block absolute top-[46%] left-[8%] md:left-[20%] z-20"
+                className="hidden md:block absolute top-[46%] left-[8%] md:left-[20%] z-20 transition-all duration-200 ease-out"
+                style={{
+                  transform: `
+                    perspective(800px) 
+                    rotateX(${isMoving ? mousePosition.y * 0.8 : 0}deg) 
+                    rotateY(${isMoving ? mousePosition.x * 0.8 : 0}deg)
+                  `,
+                  transformStyle: 'preserve-3d'
+                }}
               >
                 <div className="flex items-center gap-2 md:gap-4">
                   <div className="bg-slate-800/90 backdrop-blur-sm px-2 py-1 md:px-4 md:py-2 rounded-lg border border-pink-400/30 shadow-xl">
@@ -156,7 +312,15 @@ export function Hero() {
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0 }}
-                className="hidden md:block absolute top-[24%] md:top-[29%] right-[5%] md:right-[16%] z-20"
+                className="hidden md:block absolute top-[24%] md:top-[29%] right-[5%] md:right-[16%] z-20 transition-all duration-200 ease-out"
+                style={{
+                  transform: `
+                    perspective(800px) 
+                    rotateX(${isMoving ? mousePosition.y * 0.8 : 0}deg) 
+                    rotateY(${isMoving ? mousePosition.x * 0.8 : 0}deg)
+                  `,
+                  transformStyle: 'preserve-3d'
+                }}
               >
                 <div className="flex items-center gap-2 md:gap-4">
                   <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-pink-500/20 border-2 border-pink-400 flex items-center justify-center backdrop-blur-sm shadow-lg shadow-pink-500/20">
@@ -184,7 +348,15 @@ export function Hero() {
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0 }}
-                className="hidden md:block absolute top-[40%] right-[2%] md:right-[7%] z-20"
+                className="hidden md:block absolute top-[40%] right-[2%] md:right-[7%] z-20 transition-all duration-200 ease-out"
+                style={{
+                  transform: `
+                    perspective(800px) 
+                    rotateX(${isMoving ? mousePosition.y * 0.8 : 0}deg) 
+                    rotateY(${isMoving ? mousePosition.x * 0.8 : 0}deg)
+                  `,
+                  transformStyle: 'preserve-3d'
+                }}
               >
                 <div className="flex items-center gap-2 md:gap-4">
                   <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-pink-500/20 border-2 border-pink-400 flex items-center justify-center backdrop-blur-sm shadow-lg shadow-pink-500/20">
@@ -212,7 +384,15 @@ export function Hero() {
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0 }}
-                className="hidden md:block absolute bottom-[35%] md:bottom-[40%] right-[8%] md:right-[18%] z-20"
+                className="hidden md:block absolute bottom-[35%] md:bottom-[40%] right-[8%] md:right-[18%] z-20 transition-all duration-200 ease-out"
+                style={{
+                  transform: `
+                    perspective(800px) 
+                    rotateX(${isMoving ? mousePosition.y * 0.8 : 0}deg) 
+                    rotateY(${isMoving ? mousePosition.x * 0.8 : 0}deg)
+                  `,
+                  transformStyle: 'preserve-3d'
+                }}
               >
                 <div className="flex items-center gap-2 md:gap-4">
                   <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-pink-500/20 border-2 border-pink-400 flex items-center justify-center backdrop-blur-sm shadow-lg shadow-pink-500/20">
