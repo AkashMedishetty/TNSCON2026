@@ -58,12 +58,12 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
-          <a
-            href="#hero"
-            className="text-xl lg:text-2xl font-serif font-bold text-primary tracking-wide drop-shadow-lg"
+          <Link
+            href="/"
+            className="text-xl lg:text-2xl font-serif font-bold text-primary tracking-wide drop-shadow-lg hover:opacity-80 transition-opacity"
           >
             TNSCON 2026
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

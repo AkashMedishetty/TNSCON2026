@@ -18,7 +18,7 @@ const committeeMembers = [
   { name: "Dr. G V Murali", role: "Organising Chairman - TNSCON", photo: "/Dr. Murali Organizing Chairman TNSCON.jpeg", tier: "organising" },
   { name: "Dr. Rambabu", role: "Vice Organising Chairman - TNSCON", photo: "/Dr Rambabu Vice Organizing chairmen.jpeg", tier: "organising" },
   { name: "Dr. G Suresh", role: "Treasurer - TNSCON 2025", photo: "/Dr. Suresh Treasurer.jpeg", tier: "organising" },
-  { name: "Dr. Jagadeesh Babu", role: "Organising Secretary - TNSCON", photo: null, tier: "organising" },
+  { name: "Dr. Jagadeesh Babu", role: "Organising Secretary - TNSCON", photo: "/Dr Jagadeesh Babu.png", tier: "organising" },
   { name: "Dr. Chaitanya", role: "Organising Committee Member", photo: "/chaitanya.jpg", tier: "organising" },
   { name: "Dr. Apparao", role: "Committee Member", photo: "/Dr. Apparao Committe Member.jpeg", tier: "member" },
   { name: "Dr. Maruthi Babu", role: "Committee Member", photo: "/Dr. Murthi Babu Committe Member.jpeg", tier: "member" },
@@ -83,86 +83,166 @@ export function Committee() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="group relative"
-              style={{ perspective: "1000px" }}
             >
-              {/* 3D Container */}
-              <div className="relative h-[420px] sm:h-[460px] transition-all duration-500 group-hover:scale-105" style={{ perspective: "1500px", perspectiveOrigin: "center" }}>
-                
-                {/* Background Card (Tilted Wall) - Bigger and More Tilted */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-2xl shadow-2xl transition-all duration-700 group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.25)]"
-                  style={{
-                    transform: "rotateY(20deg)",
-                    transformStyle: "preserve-3d",
-                  }}
-                >
-                  {/* Card Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
-                    <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2 leading-tight pr-2">
-                      {member.name}
-                    </h3>
-                    <div className="flex items-start gap-2 mb-3">
-                      <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${getTierColor(member.tier)} flex-shrink-0`} />
-                      <p className="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed">
-                        {member.role}
-                      </p>
-                    </div>
+              {/* Test design for Jagadeesh Babu - Keep 3D card but remove image container */}
+              {member.name === "Dr. Jagadeesh Babu" ? (
+                <div style={{ perspective: "1000px" }}>
+                  <div className="relative h-[420px] sm:h-[460px] transition-all duration-500 group-hover:scale-105" style={{ perspective: "1500px", perspectiveOrigin: "center" }}>
                     
-                    {/* Role Badge on Card */}
-                    {(member.tier === "chief" || member.tier === "patron") && (
-                      <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r ${getTierColor(member.tier)} shadow-lg`}>
-                        {member.tier === "chief" && <Star className="w-3.5 h-3.5 text-white fill-white" />}
-                        {member.tier === "patron" && <Award className="w-3.5 h-3.5 text-white" />}
-                        <span className="text-xs font-bold text-white">
-                          {member.tier === "chief" ? "Chief Patron" : "Patron"}
-                        </span>
+                    {/* Background Card (Tilted Wall) - Bigger and More Tilted */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-2xl shadow-2xl transition-all duration-700 group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.25)]"
+                      style={{
+                        transform: "rotateY(20deg)",
+                        transformStyle: "preserve-3d",
+                      }}
+                    >
+                      {/* Card Content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                        <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2 leading-tight pr-2">
+                          {member.name}
+                        </h3>
+                        <div className="flex items-start gap-2 mb-3">
+                          <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${getTierColor(member.tier)} flex-shrink-0`} />
+                          <p className="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed">
+                            {member.role}
+                          </p>
+                        </div>
+                        
+                        {/* Role Badge on Card */}
+                        {(member.tier === "chief" || member.tier === "patron") && (
+                          <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r ${getTierColor(member.tier)} shadow-lg`}>
+                            {member.tier === "chief" && <Star className="w-3.5 h-3.5 text-white fill-white" />}
+                            {member.tier === "patron" && <Award className="w-3.5 h-3.5 text-white" />}
+                            <span className="text-xs font-bold text-white">
+                              {member.tier === "chief" ? "Chief Patron" : "Patron"}
+                            </span>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
 
-                  {/* Decorative Elements */}
-                  <div className="absolute top-4 left-4 w-24 h-24 opacity-5">
-                    <div className={`w-full h-full bg-gradient-to-br ${getTierColor(member.tier)} rounded-full`} />
-                  </div>
-                  <div className="absolute bottom-32 left-6 w-20 h-20 opacity-5">
-                    <div className={`w-full h-full bg-gradient-to-tr ${getTierColor(member.tier)} rounded-full`} />
-                  </div>
-                </div>
+                      {/* Decorative Elements */}
+                      <div className="absolute top-4 left-4 w-24 h-24 opacity-5">
+                        <div className={`w-full h-full bg-gradient-to-br ${getTierColor(member.tier)} rounded-full`} />
+                      </div>
+                      <div className="absolute bottom-32 left-6 w-20 h-20 opacity-5">
+                        <div className={`w-full h-full bg-gradient-to-tr ${getTierColor(member.tier)} rounded-full`} />
+                      </div>
+                    </div>
 
-                {/* Floating Image (Person in front of wall) - RIGHT SIDE */}
-                <div 
-                  className="absolute right-0 top-0 w-[65%] h-[240px] sm:h-[270px] transition-all duration-700 group-hover:-translate-y-2"
-                  style={{
-                    transform: "translateZ(60px)",
-                    transformStyle: "preserve-3d",
-                    zIndex: 10,
-                  }}
-                >
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] transition-shadow duration-700">
-                    {member.photo ? (
-                      <>
+                    {/* Direct Image - NO CARD BACKGROUND - RIGHT SIDE - 1.25x LARGER */}
+                    <div 
+                      className="absolute w-[81%] h-[300px] sm:h-[340px] transition-all duration-700 group-hover:-translate-y-2"
+                      style={{
+                        right: "-42px",
+                        top: "-30px",
+                        transform: "translateZ(60px)",
+                        transformStyle: "preserve-3d",
+                        zIndex: 10,
+                      }}
+                    >
+                      {member.photo ? (
                         <img 
                           src={member.photo} 
                           alt={member.name}
-                          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl"
                         />
-                        {/* Subtle Gradient Overlay */}
-                        <div className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                      </>
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
-                        <User className="w-20 h-20 text-primary/30" />
-                      </div>
-                    )}
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <User className="w-20 h-20 text-primary/30 drop-shadow-lg" />
+                        </div>
+                      )}
+
+                      {/* Shadow underneath image */}
+                      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-10 bg-black/25 blur-xl rounded-full transition-all duration-500 group-hover:w-[95%] group-hover:bg-black/35" />
+                    </div>
                   </div>
 
-                  {/* Shadow underneath image */}
-                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-10 bg-black/25 blur-xl rounded-full transition-all duration-500 group-hover:w-[95%] group-hover:bg-black/35" />
+                  {/* Ambient Glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${getTierColor(member.tier)} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-700 -z-10 rounded-full`} />
                 </div>
-              </div>
+              ) : (
+                /* Original 3D Card Design for Other Members */
+                <div style={{ perspective: "1000px" }}>
+                  <div className="relative h-[420px] sm:h-[460px] transition-all duration-500 group-hover:scale-105" style={{ perspective: "1500px", perspectiveOrigin: "center" }}>
+                    
+                    {/* Background Card (Tilted Wall) - Bigger and More Tilted */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-2xl shadow-2xl transition-all duration-700 group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.25)]"
+                      style={{
+                        transform: "rotateY(20deg)",
+                        transformStyle: "preserve-3d",
+                      }}
+                    >
+                      {/* Card Content */}
+                      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                        <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2 leading-tight pr-2">
+                          {member.name}
+                        </h3>
+                        <div className="flex items-start gap-2 mb-3">
+                          <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${getTierColor(member.tier)} flex-shrink-0`} />
+                          <p className="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed">
+                            {member.role}
+                          </p>
+                        </div>
+                        
+                        {/* Role Badge on Card */}
+                        {(member.tier === "chief" || member.tier === "patron") && (
+                          <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r ${getTierColor(member.tier)} shadow-lg`}>
+                            {member.tier === "chief" && <Star className="w-3.5 h-3.5 text-white fill-white" />}
+                            {member.tier === "patron" && <Award className="w-3.5 h-3.5 text-white" />}
+                            <span className="text-xs font-bold text-white">
+                              {member.tier === "chief" ? "Chief Patron" : "Patron"}
+                            </span>
+                          </div>
+                        )}
+                      </div>
 
-              {/* Ambient Glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${getTierColor(member.tier)} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-700 -z-10 rounded-full`} />
+                      {/* Decorative Elements */}
+                      <div className="absolute top-4 left-4 w-24 h-24 opacity-5">
+                        <div className={`w-full h-full bg-gradient-to-br ${getTierColor(member.tier)} rounded-full`} />
+                      </div>
+                      <div className="absolute bottom-32 left-6 w-20 h-20 opacity-5">
+                        <div className={`w-full h-full bg-gradient-to-tr ${getTierColor(member.tier)} rounded-full`} />
+                      </div>
+                    </div>
+
+                    {/* Floating Image (Person in front of wall) - RIGHT SIDE */}
+                    <div 
+                      className="absolute right-0 top-0 w-[65%] h-[240px] sm:h-[270px] transition-all duration-700 group-hover:-translate-y-2"
+                      style={{
+                        transform: "translateZ(60px)",
+                        transformStyle: "preserve-3d",
+                        zIndex: 10,
+                      }}
+                    >
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] transition-shadow duration-700">
+                        {member.photo ? (
+                          <>
+                            <img 
+                              src={member.photo} 
+                              alt={member.name}
+                              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                            />
+                            {/* Subtle Gradient Overlay */}
+                            <div className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                          </>
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                            <User className="w-20 h-20 text-primary/30" />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Shadow underneath image */}
+                      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-10 bg-black/25 blur-xl rounded-full transition-all duration-500 group-hover:w-[95%] group-hover:bg-black/35" />
+                    </div>
+                  </div>
+
+                  {/* Ambient Glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${getTierColor(member.tier)} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-700 -z-10 rounded-full`} />
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
