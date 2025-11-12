@@ -7,24 +7,24 @@ import { User, Award, Star } from "lucide-react"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 const committeeMembers = [
-  { name: "Sri Puvvada Nageswara Rao Garu", role: "Chief Patron", photo: "/P Nageswara Rao Cheif Patron .jpeg", tier: "chief" },
-  { name: "Sri Puvvada Ajay Kumar Garu", role: "Chief Patron", photo: "/P Ajay Kumar Chief Patron .jpeg", tier: "chief" },
+  { name: "Sri Puvvada Nageswara Rao Garu", role: "Chief Patron", photo: "/New OC/Sri Puvvada Nageswara Rao Garu.png", tier: "chief" },
+  { name: "Sri Puvvada Ajay Kumar Garu", role: "Chief Patron", photo: "/New OC/Sri Puvvada Ajay Kumar Garu.png", tier: "chief" },
   { name: "Smt. Puvvada Jayashree Garu", role: "Patron", photo: "/P Jayashree Patron.png", tier: "patron" },
-  { name: "Sri Dr Puvvada Naren Garu", role: "Patron", photo: "/P Naren Patron.jpeg", tier: "patron" },
+  { name: "Sri Dr Puvvada Naren Garu", role: "Patron", photo: "/New OC/Sri Dr Puvvada Naren Garu.png", tier: "patron" },
   { name: "Sri Dr. K Satyanarayana Garu", role: "Patron", photo: "/K Satyanarayana Patron.png", tier: "patron" },
   { name: "Dr. P Rama Rao", role: "Founder, KNS", photo: null, tier: "leadership" },
-  { name: "Dr. P Asadharan", role: "President, KNS", photo: "/Dr. Asadharan sir President KNS.jpeg", tier: "leadership" },
-  { name: "Dr. M Ramesh", role: "Vice President, KNS", photo: "/Dr. Ramesh sir Vice President KNS.jpeg", tier: "leadership" },
-  { name: "Dr. G V Murali", role: "Organising Chairman - TNSCON", photo: "/Dr. Murali Organizing Chairman TNSCON.jpeg", tier: "organising" },
-  { name: "Dr. Rambabu", role: "Vice Organising Chairman - TNSCON", photo: "/Dr Rambabu Vice Organizing chairmen.jpeg", tier: "organising" },
-  { name: "Dr. G Suresh", role: "Treasurer - TNSCON 2025", photo: "/Dr. Suresh Treasurer.jpeg", tier: "organising" },
+  { name: "Dr. P Asadharan", role: "President, KNS", photo: "/New OC/Dr. P Asadharan.png", tier: "leadership" },
+  { name: "Dr. M Ramesh", role: "Vice President, KNS", photo: "/New OC/Dr. M Ramesh.png", tier: "leadership" },
+  { name: "Dr. G V Murali", role: "Organising Chairman - TNSCON", photo: "/New OC/Dr. G V Murali.png", tier: "organising" },
+  { name: "Dr. Rambabu", role: "Vice Organising Chairman - TNSCON", photo: "/New OC/Dr. Rambabu.png", tier: "organising" },
+  { name: "Dr. G Suresh", role: "Treasurer - TNSCON 2025", photo: "/New OC/Dr. G Suresh.png", tier: "organising" },
   { name: "Dr. Jagadeesh Babu", role: "Organising Secretary - TNSCON", photo: "/Dr Jagadeesh Babu.png", tier: "organising" },
-  { name: "Dr. Chaitanya", role: "Organising Committee Member", photo: "/chaitanya.jpg", tier: "organising" },
-  { name: "Dr. Apparao", role: "Committee Member", photo: "/Dr. Apparao Committe Member.jpeg", tier: "member" },
-  { name: "Dr. Maruthi Babu", role: "Committee Member", photo: "/Dr. Murthi Babu Committe Member.jpeg", tier: "member" },
-  { name: "Dr. Bhaskar", role: "Committee Member", photo: "/Dr. Bhaskar Committe Member.jpeg", tier: "member" },
-  { name: "Dr. Sarat Chandra", role: "Committee Member", photo: "/Dr. Sarat Chnadra Committe Member.jpeg", tier: "member" },
-  { name: "Dr. Varun", role: "Committee Member", photo: "/Dr. Varun Committe Member.jpeg", tier: "member" },
+  { name: "Dr. Chaitanya", role: "Organising Committee Member", photo: "/New OC/Dr. Chaitanya.png", tier: "organising" },
+  { name: "Dr. Apparao", role: "Committee Member", photo: "/New OC/Dr. Apparao.png", tier: "member" },
+  { name: "Dr. Maruthi Babu", role: "Committee Member", photo: "/New OC/Dr. Maruthi Babu.png", tier: "member" },
+  { name: "Dr. Bhaskar", role: "Committee Member", photo: "/New OC/Dr. Bhaskar.png", tier: "member" },
+  { name: "Dr. Sarat Chandra", role: "Committee Member", photo: "/New OC/Dr. Sarat Chandra.png", tier: "member" },
+  { name: "Dr. Varun", role: "Committee Member", photo: "/New OC/Dr. Varun.png", tier: "member" },
 ]
 
 export function Committee() {

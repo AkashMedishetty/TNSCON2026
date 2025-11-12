@@ -40,6 +40,15 @@ export function Navigation() {
     { href: "/contact", label: "Contact" },
   ]
 
+  const handleBrochureDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/TNSCON 2026_1st Announcemt Brochure_Khammam.pdf'
+    link.download = 'TNSCON 2026_1st Announcemt Brochure_Khammam.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -60,9 +69,16 @@ export function Navigation() {
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="text-xl lg:text-2xl font-serif font-bold text-primary tracking-wide drop-shadow-lg hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            TNSCON 2026
+            <img 
+              src="/TNSCON Stamp Logo.png" 
+              alt="TNSCON 2026 Logo" 
+              className="h-12 lg:h-14 w-auto object-contain"
+            />
+            <span className="text-xl lg:text-2xl font-serif font-bold text-primary tracking-wide drop-shadow-lg">
+              TNSCON 2026
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -80,6 +96,12 @@ export function Navigation() {
                 {link.label}
               </a>
             ))}
+            <button
+              onClick={handleBrochureDownload}
+              className="hidden md:inline-block px-6 py-2 text-sm uppercase tracking-wider bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full hover:bg-orange-500/30 hover:border-orange-500/50 transition-all duration-300 font-light text-orange-400 hover:shadow-lg hover:shadow-orange-500/20"
+            >
+              Brochure
+            </button>
             <a
               href="https://forms.gle/Dvo4g58ZJ6F1bFHk6"
               target="_blank"
@@ -120,6 +142,15 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
+              <button
+                onClick={() => {
+                  handleBrochureDownload()
+                  setIsMobileMenuOpen(false)
+                }}
+                className="text-sm uppercase tracking-wider text-orange-400 hover:text-orange-300 transition-colors font-light text-left"
+              >
+                Brochure
+              </button>
               <a
                 href="https://forms.gle/Dvo4g58ZJ6F1bFHk6"
                 target="_blank"
